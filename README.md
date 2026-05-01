@@ -1,48 +1,45 @@
-# game
+# Game of Life
 
-This template should help get you started developing with Vue 3 in Vite.
+Interactive [Conway’s Game of Life](https://conwaylife.com/wiki/Conway%27s_Game_of_Life) in the browser: a large canvas grid, playback controls, classic patterns, and optional toroidal edges.
 
-## Recommended IDE Setup
+Built with **Vue 3**, **Vite**, **TypeScript**, and **Pinia**. Core simulation logic lives in plain TS (`src/engine/`) with Vitest specs; the Pinia store manages grid buffers and UI-facing actions; rendering uses a 2D canvas.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Recommended Browser Setup
+- **Simulation:** Run / pause, single-step, clear; adjustable step interval (ms).
+- **Topology:** Toggle toroidal (wrapping) vs finite grid edges.
+- **Editing:** Paint or erase cells by dragging on the canvas.
+- **Grid:** Resize the field (existing pattern can stay centered where possible).
+- **Seeding:** Random fill by density; built-in named presets; paste **RLE** pattern text (LifeWiki-style).
+- **Stagnation:** Optional auto-pause when population stops changing for N generations.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Requirements
 
-## Type Support for `.vue` Imports in TS
+- **Node.js** `^20.19.0` or `>=22.12.0` (see `package.json` → `engines`).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Scripts
 
 ```sh
 npm install
+npm run dev          # dev server + HMR
+npm run build        # vue-tsc + production bundle
+npm run preview      # serve production build locally
+npm run test         # Vitest (engine unit tests)
+npm run lint         # ESLint + oxlint
 ```
 
-### Compile and Hot-Reload for Development
+## Project layout
 
-```sh
-npm run dev
-```
+| Path | Role |
+|------|------|
+| `src/engine/` | Pure GoL stepping, helpers, RLE decode, presets — tested |
+| `src/stores/gameOfLife.ts` | Grid double-buffer, mutations, playback/stagnation |
+| `src/composables/useSimulationLoop.ts` | `requestAnimationFrame` timing loop |
+| `src/components/LifeCanvas.vue` | Canvas drawing + pointer interaction |
+| `src/components/game/` | Toolbar panels, HUD, layout chrome |
 
-### Type-Check, Compile and Minify for Production
+## IDE
 
-```sh
-npm run build
-```
+[VS Code](https://code.visualstudio.com/) + [Vue — Official (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Type-checking uses `vue-tsc`, not plain `tsc`, so editors benefit from Volar for `.vue` types.
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Configuration reference: [Vite config](https://vite.dev/config/).
