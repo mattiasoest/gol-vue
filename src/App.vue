@@ -2,11 +2,7 @@
 import GameHeader from '@/components/game/GameHeader.vue'
 import GameHud from '@/components/game/GameHud.vue'
 import GameLifeStage from '@/components/game/GameLifeStage.vue'
-import ToolbarGridSize from '@/components/game/ToolbarGridSize.vue'
-import ToolbarPatterns from '@/components/game/ToolbarPatterns.vue'
-import ToolbarPlayback from '@/components/game/ToolbarPlayback.vue'
-import ToolbarRandomize from '@/components/game/ToolbarRandomize.vue'
-import ToolbarStagnation from '@/components/game/ToolbarStagnation.vue'
+import Toolbar from '@/components/game/Toolbar.vue'
 </script>
 
 <template>
@@ -14,11 +10,7 @@ import ToolbarStagnation from '@/components/game/ToolbarStagnation.vue'
     <GameHeader />
 
     <section class="toolbar" aria-label="Simulation controls">
-      <ToolbarPlayback />
-      <ToolbarRandomize />
-      <ToolbarGridSize />
-      <ToolbarPatterns />
-      <ToolbarStagnation />
+      <Toolbar />
     </section>
 
     <GameHud />
