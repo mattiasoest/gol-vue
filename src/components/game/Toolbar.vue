@@ -102,12 +102,26 @@ function importRLE(): void {
 
   <div class="rle-stack">
     <label class="field">
-      Paste RLE
+      <span>Paste RLE</span>
+      <small id="rle-format-hint" class="muted rle-hint">
+        Copy <strong>Raw RLE</strong> from a
+        <a href="https://conwaylife.com/wiki/" target="_blank" rel="noopener noreferrer"
+          >LifeWiki</a
+        >
+        pattern page (the block with <span class="mono">x = …</span> and run-length lines), or paste
+        only the pattern body. <span class="mono">o</span> = live cell,
+        <span class="mono">b</span> = blank, <span class="mono">$</span> = next row, digits repeat
+        the following symbol; <span class="mono">!</span> ends the pattern. See
+        <a href="https://conwaylife.com/wiki/RLE" target="_blank" rel="noopener noreferrer"
+          >RLE format</a
+        >.
+      </small>
       <textarea
         v-model="rlePaste"
-        rows="5"
+        rows="6"
         spellcheck="false"
-        placeholder="#C pasted pattern&#10;x = …"
+        aria-describedby="rle-format-hint"
+        placeholder="x = 3, y = 3, rule = B3/S23&#10;bob$2bo$3o!"
       ></textarea>
     </label>
     <button type="button" class="stretch" @click="importRLE">Import RLE</button>

@@ -131,6 +131,22 @@
   align-items: center;
 }
 
+.life-game .field .rle-hint {
+  font-weight: 500;
+  line-height: 1.45;
+  max-width: clamp(260px, 42vw, 520px);
+}
+
+.life-game .field .rle-hint a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.life-game .field .rle-hint a:hover {
+  filter: brightness(1.12);
+}
+
 .life-game .toolbar input[type='range'] {
   accent-color: var(--accent);
 }
