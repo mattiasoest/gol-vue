@@ -1,0 +1,171 @@
+.life-game {
+  --bg: #020617;
+  --panel: #0f172a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #34d399;
+  min-height: 100vh;
+  padding: clamp(18px, 3vw, 36px);
+  background:
+    radial-gradient(circle at 20% -10%, rgba(52, 211, 153, 0.12), transparent),
+    radial-gradient(circle at 110% 0%, rgba(14, 165, 233, 0.12), transparent), var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-family:
+    'Inter Variable',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+.life-game .masthead h1 {
+  margin: 0 0 4px;
+  font-size: clamp(1.85rem, 3vw, 2.55rem);
+  letter-spacing: -0.06em;
+  font-weight: 650;
+}
+
+.life-game .muted {
+  color: var(--muted);
+}
+
+.life-game .mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+}
+
+.life-game .masthead p {
+  margin: 0;
+  max-width: 78ch;
+  line-height: 1.5;
+}
+
+.life-game .toolbar {
+  padding: clamp(14px, 2vw, 18px);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 18px 45px rgba(2, 6, 23, 0.6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px clamp(14px, 2vw, 22px);
+  align-items: flex-end;
+}
+
+.life-game .cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.life-game .toolbar button {
+  background: rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(226, 232, 240, 0.1);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.life-game .toolbar button.primary {
+  background: linear-gradient(165deg, #34d399, #059669);
+  border: none;
+  color: #022c22;
+}
+
+.life-game .toolbar button.stretch {
+  align-self: flex-end;
+}
+
+.life-game .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  min-width: 190px;
+}
+
+.life-game .field.inline {
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.life-game .toolbar input[type='range'] {
+  accent-color: var(--accent);
+}
+
+.life-game .toolbar select,
+.life-game .toolbar input:not([type='range']):not([type='checkbox']) {
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.life-game .toolbar textarea {
+  width: clamp(260px, 42vw, 520px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  padding: 8px;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  resize: vertical;
+}
+
+.life-game .rle-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.life-game .grid-dims label {
+  min-width: unset;
+}
+
+.life-game .grid-dims button {
+  height: fit-content;
+}
+
+.life-game .divider {
+  width: 1px;
+  min-height: 44px;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+@media (max-width: 960px) {
+  .life-game .divider {
+    width: 100%;
+    min-height: 1px;
+  }
+}
+
+.life-game .hud {
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.life-game .hud strong {
+  color: var(--accent);
+}
+
+.life-game .stage {
+  overflow: auto;
+  border-radius: 16px;
+  padding: clamp(10px, 2vw, 18px);
+  background: rgba(2, 6, 23, 0.5);
+}
