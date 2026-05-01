@@ -65,18 +65,51 @@
 }
 
 .life-game .toolbar button {
+  cursor: pointer;
   background: rgba(148, 163, 184, 0.12);
   border: 1px solid rgba(226, 232, 240, 0.1);
   color: var(--text);
   padding: 8px 16px;
   border-radius: 10px;
   font-weight: 600;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.12s ease,
+    filter 0.15s ease;
+}
+
+.life-game .toolbar button:not(.primary):hover {
+  background: rgba(148, 163, 184, 0.24);
+  border-color: rgba(226, 232, 240, 0.28);
+  box-shadow: 0 2px 12px rgba(2, 6, 23, 0.35);
+}
+
+.life-game .toolbar button:not(.primary):active {
+  transform: translateY(1px);
+}
+
+.life-game .toolbar button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .life-game .toolbar button.primary {
   background: linear-gradient(165deg, #34d399, #059669);
   border: none;
   color: #022c22;
+}
+
+.life-game .toolbar button.primary:hover {
+  filter: brightness(1.09);
+  box-shadow: 0 4px 18px rgba(52, 211, 153, 0.4);
+}
+
+.life-game .toolbar button.primary:active {
+  transform: translateY(1px);
+  filter: brightness(0.96);
+  box-shadow: 0 1px 8px rgba(52, 211, 153, 0.25);
 }
 
 .life-game .toolbar button.stretch {
